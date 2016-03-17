@@ -22,7 +22,7 @@
             android:text="张司机"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="@color/popwintext"
+            android:textColor="@color/black_popwintext"
             />
         <TextView
             android:paddingLeft="10dp"
@@ -31,7 +31,7 @@
             android:text="[浙A JW529]"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="@color/popwintext"
+            android:textColor="@color/black_popwintext"
             />
         <Button
             android:id="@+id/btn_peizai"
@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
             android:text="张司机"
             android:textSize="@dimen/popwindowtext"
-            android:textColor="@color/popwintext"
+            android:textColor="@color/black_popwintext"
             />
         <TextView
             android:paddingLeft="10dp"
@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:text="13523456789"
             android:textSize="@dimen/popwindowtext"
-            android:textColor="@color/popwintext"
+            android:textColor="@color/black_popwintext"
             />
 
     </LinearLayout>
@@ -77,12 +77,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="订单号"
-            android:textColor="@color/popwintext"
+            android:textColor="@color/black_popwintext"
             android:textSize="@dimen/popwindowtext"
             />
         <TextView
             android:paddingLeft="10dp"
-            android:textColor="@color/popwintext"
+            android:textColor="@color/black_popwintext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="RSHAHQ00009"
@@ -101,11 +101,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="13*5*4米"
-            android:textColor="@color/popwintext"
+            android:textColor="@color/black_popwintext"
             android:textSize="@dimen/popwindowtext"
             />
         <TextView
-            android:textColor="@color/popwintext"
+            android:textColor="@color/black_popwintext"
             android:paddingLeft="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -121,7 +121,7 @@
             android:textColor="#79C37A"
             />
         <TextView
-            android:textColor="@color/popwintext"
+            android:textColor="@color/black_popwintext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="方"
@@ -135,6 +135,7 @@
             android:max="100"
             android:progress="50"
             style="?android:attr/progressBarStyleHorizontal"
+            android:progressDrawable="@drawable/progressbar_horizontal"
 
             />
 
@@ -151,7 +152,7 @@
             android:layout_height="wrap_content"
             android:text="限重50吨"
             android:textSize="@dimen/popwindowtext"
-            android:textColor="@color/popwintext"
+            android:textColor="@color/black_popwintext"
             />
         <TextView
             android:paddingLeft="10dp"
@@ -159,7 +160,7 @@
             android:layout_height="wrap_content"
             android:text="剩余"
             android:textSize="@dimen/popwindowtext"
-            android:textColor="@color/popwintext"
+            android:textColor="@color/black_popwintext"
             />
         <TextView
 
@@ -170,21 +171,22 @@
             android:textColor="#79C37A"
             />
         <TextView
-            android:textColor="@color/popwintext"
+            android:textColor="@color/black_popwintext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="吨"
             android:textSize="@dimen/popwindowtext"
             />
         <ProgressBar
+
             android:layout_gravity="center"
-            android:paddingLeft="20dp"
+            android:paddingLeft="28dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:max="100"
             android:progress="50"
             style="?android:attr/progressBarStyleHorizontal"
-
+            android:progressDrawable="@drawable/progressbar_horizontal_2"
             />
 
     </LinearLayout>

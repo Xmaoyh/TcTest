@@ -11,4 +11,14 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+    <!--popupwindow 动画 -->
+    <style name="popwin_anim_style">
+        <item name="android:windowEnterAnimation">@anim/popshow</item>
+       <item name="android:windowExitAnimation">@anim/pophide</item>
+    </style>
+
+    <style name="myinfo_text_style">
+        <item name="android:textColor"> @color/black_popwintext</item>
+        <item name="android:textSize"> @dimen/popwindowtext</item>
+    </style>
 </resources>

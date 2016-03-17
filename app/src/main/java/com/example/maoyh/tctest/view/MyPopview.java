@@ -43,5 +43,7 @@ public class MyPopview extends PopupWindow{
         ColorDrawable dw = new ColorDrawable(0x000000);
         //设置PopupWindow弹出窗体的背景
         this.setBackgroundDrawable(dw);
+        this.setAnimationStyle(R.style.popwin_anim_style);
     }
+
 }

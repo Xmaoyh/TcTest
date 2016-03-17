@@ -10,8 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.maoyh.tctest.R;
-import com.example.maoyh.tctest.activity.SonghuoActivity;
-import com.example.maoyh.tctest.activity.WuliuActivity;
+import com.example.maoyh.tctest.activity.PickupGoodsActivity;
+import com.example.maoyh.tctest.activity.LogisticsActivity;
 import com.readystatesoftware.viewbadger.BadgeView;
 
 public class MissonFragment extends Fragment implements View.OnClickListener {
@@ -21,7 +21,7 @@ public class MissonFragment extends Fragment implements View.OnClickListener {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		 v = inflater.inflate(R.layout.layout_fragment_misson, null);
+		 v = inflater.inflate(R.layout.fragment_misson, null);
 		initView();
 		return v;
 	}
@@ -51,10 +51,10 @@ public class MissonFragment extends Fragment implements View.OnClickListener {
 	public void onClick(View view) {
 		switch (view.getId()) {
 			case R.id.iv_songhuo:
-				startActivity(new Intent(getActivity(), SonghuoActivity.class));
+				startActivity(new Intent(getActivity(), PickupGoodsActivity.class));
 				break;
 			case R.id.iv_wuliu:
-				startActivity(new Intent(getActivity(), WuliuActivity.class));
+				startActivity(new Intent(getActivity(), LogisticsActivity.class));
 				break;
 		}
 	}
