@@ -42,6 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
         <LinearLayout
+            android:layout_marginLeft="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -54,6 +55,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
                 android:layout_weight="1"
+                android:scaleType = "fitXY"
                 android:src="@mipmap/idcard" />
 
             <TextView
@@ -64,7 +66,7 @@
                 style="@style/myinfo_text_style" />
         </LinearLayout>
         <LinearLayout
-
+            android:layout_marginLeft="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -77,6 +79,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
                 android:layout_weight="1"
+                android:scaleType = "fitXY"
                 android:src="@mipmap/idcard" />
 
             <TextView

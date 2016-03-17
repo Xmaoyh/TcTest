@@ -40,8 +40,10 @@ public class MyInfoFragment extends Fragment implements View.OnClickListener {
     /** 图片路径 **/
     private String mCurrentPhotoStr;
     private Bitmap mPhotoImage;
-    private static final int TAKE_PHOTO = 1;
-    private static final int GET_PHOTO = 2;
+    private static final int TAKE_PHOTO_FRONT = 1;
+    private static final int TAKE_PHOTO_BACK = 3;
+    private static final int GET_PHOTO_FRONT= 2;
+    private static final int GET_PHOTO_BCAK= 4;
 
     /**
      * 需要传递参数时有利于解耦
@@ -67,6 +69,7 @@ public class MyInfoFragment extends Fragment implements View.OnClickListener {
         View v = inflater.inflate(R.layout.fragment_myinfo, null);
         ButterKnife.bind(this, v);
         mImagevFront.setOnClickListener(this);
+        mImagevBack.setOnClickListener(this);
         return v;
 
     }
@@ -79,10 +82,10 @@ public class MyInfoFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-            showChoosePop();
+            showChoosePop(view);
     }
 
-    private void showChoosePop() {
+    private void showChoosePop(final View view) {
           final PopviewChoosePic myPopview = new PopviewChoosePic(getActivity());
             myPopview.showAtLocation(LayoutInflater.from(getMyActivity()).inflate(R.layout.fragment_myinfo, null), Gravity.BOTTOM, 0, 0);
             myPopview.setPopviewclickListener(new PopviewChoosePic.PopviewclickListener() {
@@ -90,26 +93,41 @@ public class MyInfoFragment extends Fragment implements View.OnClickListener {
             public void OnTopClick() {
                 //相机拍照
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                File file = new File(Environment.getExternalStorageDirectory(),"workupload.jpg");
-                if(!file.exists()) {
+                File outputImage = new File(Environment.getExternalStorageDirectory(),"tempImage.jpg");
+                if(outputImage.exists()) {
+                    outputImage.delete();
                     try {
-                        file.createNewFile();
+                        outputImage.createNewFile();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }
-                Uri imageUri = Uri.fromFile(file);
-
+                Uri imageUri = Uri.fromFile(outputImage);
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
                 Log.e("uri", imageUri.toString());
-                startActivityForResult(intent, TAKE_PHOTO);
+                switch (view.getId()) {
+                    case R.id.imagev_front:
+                        startActivityForResult(intent, TAKE_PHOTO_FRONT);
+                        break;
+                    case R.id.imagev_back:
+                        startActivityForResult(intent, TAKE_PHOTO_BACK);
+                }
+
             }
 
             @Override
             public void OnMiddleClick() {
                 //图库选取
                 Intent intent2 = new Intent(Intent.ACTION_PICK, null);
-                intent2.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,"image/*" );
-                startActivityForResult(intent2, GET_PHOTO);
+                intent2.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
+                switch (view.getId()) {
+                    case R.id.imagev_front:
+                        startActivityForResult(intent2, GET_PHOTO_FRONT);
+                        break;
+                    case R.id.imagev_back:
+                        startActivityForResult(intent2, GET_PHOTO_BCAK);;
+                }
+
             }
 
             @Override
@@ -124,13 +142,15 @@ public class MyInfoFragment extends Fragment implements View.OnClickListener {
         super.onActivityResult(requestCode, resultCode, data);
         getActivity();
 
-        if (requestCode == TAKE_PHOTO && resultCode == Activity.RESULT_OK) {
+        if (requestCode == TAKE_PHOTO_FRONT && resultCode == Activity.RESULT_OK) {
             Bundle bundle = data.getExtras();
             //Bitmap bitmap = (Bitmap) bundle.get("data");// 获取相机返回的数据，并转换为Bitmap图片格式
-            Bitmap bitmap =  BitmapFactory.decodeFile(Environment.getExternalStorageDirectory()+"/workupload.jpg");
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inSampleSize = 2; // 直接设置它的压缩率，表示1/2
+            Bitmap bitmap =  BitmapFactory.decodeFile(Environment.getExternalStorageDirectory()+"/tempImage.jpg", options);
             mImagevFront.setImageBitmap(bitmap);        // 将图片显示在ImageView里
         }
-        if (requestCode == GET_PHOTO && resultCode == Activity.RESULT_OK) {
+        if (requestCode == GET_PHOTO_FRONT && resultCode == Activity.RESULT_OK) {
             Uri uri = data.getData();
             // cursor游标
             Cursor cursor = getActivity().getContentResolver().query(uri, null, null,
@@ -140,8 +160,34 @@ public class MyInfoFragment extends Fragment implements View.OnClickListener {
                     .getColumnIndex(MediaStore.Images.ImageColumns.DATA);
             mCurrentPhotoStr = cursor.getString(idx);
             cursor.close();
-            mPhotoImage = BitmapFactory.decodeFile(mCurrentPhotoStr);
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inSampleSize = 2; // 直接设置它的压缩率，表示1/2
+            mPhotoImage = BitmapFactory.decodeFile(mCurrentPhotoStr,options);
             mImagevFront.setImageBitmap(mPhotoImage);
         }
+
+            if (requestCode == TAKE_PHOTO_BACK && resultCode == Activity.RESULT_OK) {
+                Bundle bundle = data.getExtras();
+                //Bitmap bitmap = (Bitmap) bundle.get("data");// 获取相机返回的数据，并转换为Bitmap图片格式
+                BitmapFactory.Options options = new BitmapFactory.Options();
+                options.inSampleSize = 2; // 直接设置它的压缩率，表示1/2
+                Bitmap bitmap =  BitmapFactory.decodeFile(Environment.getExternalStorageDirectory()+"/tempImage.jpg", options);
+                mImagevBack.setImageBitmap(bitmap);        // 将图片显示在ImageView里
+            }
+            if (requestCode == GET_PHOTO_BCAK && resultCode == Activity.RESULT_OK) {
+                Uri uri = data.getData();
+                // cursor游标
+                Cursor cursor = getActivity().getContentResolver().query(uri, null, null,
+                        null, null);
+                cursor.moveToFirst();
+                int idx = cursor
+                        .getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+                mCurrentPhotoStr = cursor.getString(idx);
+                cursor.close();
+                BitmapFactory.Options options = new BitmapFactory.Options();
+                options.inSampleSize = 2; // 直接设置它的压缩率，表示1/2
+                mPhotoImage = BitmapFactory.decodeFile(mCurrentPhotoStr,options);
+                mImagevBack.setImageBitmap(mPhotoImage);
+            }
     }
 }
