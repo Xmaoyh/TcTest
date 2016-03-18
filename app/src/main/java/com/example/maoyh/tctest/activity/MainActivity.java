@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.example.maoyh.tctest.R;
 import com.example.maoyh.tctest.entity.TabEntity;
-import com.example.maoyh.tctest.fragment.MissonFragment;
+import com.example.maoyh.tctest.fragment.MissionFragment;
 import com.example.maoyh.tctest.fragment.MyHomeFragment;
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
@@ -49,8 +49,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void initData() {
 
-        mFragments.add(new MissonFragment());
-        mFragments.add(new MissonFragment());
+        mFragments.add(new MissionFragment());
+        mFragments.add(new MissionFragment());
         mFragments.add(new MyHomeFragment().newInstance());
 
 

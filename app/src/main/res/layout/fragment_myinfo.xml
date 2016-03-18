@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
+            android:id="@+id/imagev_turn_back"
             android:src="@mipmap/back"
             android:layout_width="wrap_content"
             android:layout_height="40dp" />
@@ -109,13 +110,15 @@
             android:gravity="right"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-        <TextView
-
+        <EditText
+            android:background="@null"
             android:layout_marginRight="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:enabled="false"
+            android:hint="尊姓大名"
             style="@style/myinfo_text_style"
-            android:text="张三"
+
             />
         </LinearLayout>
     </LinearLayout>
@@ -137,13 +140,14 @@
             android:gravity="right"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <TextView
-
+            <EditText
                 android:layout_marginRight="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@null"
+                android:enabled="false"
+                android:hint="填写身份证号码"
                 style="@style/myinfo_text_style"
-                android:text="54468489489789"
                 />
         </LinearLayout>
     </LinearLayout>
@@ -170,8 +174,10 @@
                 android:layout_marginRight="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@null"
+                android:enabled="false"
+                android:hint="填写地址"
                 style="@style/myinfo_text_style"
-                android:text="杭州市文一西路1338号"
                 />
         </LinearLayout>
     </LinearLayout>
@@ -193,14 +199,15 @@
             android:gravity="right"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <TextView
+            <EditText
 
                 android:layout_marginRight="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@null"
+                android:enabled="false"
+                android:hint="填写身份证号码"
                 style="@style/myinfo_text_style"
-                android:textColor="#969696"
-                android:text="13112345678"
                 />
         </LinearLayout>
     </LinearLayout>
