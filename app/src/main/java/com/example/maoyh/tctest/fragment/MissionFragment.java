@@ -10,8 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.maoyh.tctest.R;
-import com.example.maoyh.tctest.activity.PickupGoodsActivity;
 import com.example.maoyh.tctest.activity.LogisticsActivity;
+import com.example.maoyh.tctest.activity.PickupGoodsActivity;
 import com.readystatesoftware.viewbadger.BadgeView;
 
 public class MissionFragment extends Fragment implements View.OnClickListener {

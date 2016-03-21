@@ -15,6 +15,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.example.maoyh.tctest.R;
@@ -36,6 +37,16 @@ public class MyInfoFragment extends Fragment implements View.OnClickListener {
     ImageView mImagevFront;
     @Bind(R.id.imagev_back)
     ImageView mImagevBack;
+    @Bind(R.id.imagev_commit)
+    ImageView mImagevCommit;
+    @Bind(R.id.edit_name)
+    EditText mEditName;
+    @Bind(R.id.edit_idcard)
+    EditText mEditIdcard;
+    @Bind(R.id.edit_address)
+    EditText mEditAddress;
+    @Bind(R.id.edit_phone)
+    EditText mEditPhone;
 
 
     /**
@@ -197,7 +208,16 @@ public class MyInfoFragment extends Fragment implements View.OnClickListener {
     }
 
     @OnClick(R.id.imagev_turn_back)
-    public void turnbackClick(){
+    public void turnbackClick() {
         getMyActivity().finish();
+    }
+
+    @OnClick(R.id.imagev_commit)
+    public void commitClick() {
+        mEditName.setEnabled(true);
+        mEditName.setText(mEditName.getText().toString());
+
+
+
     }
 }
