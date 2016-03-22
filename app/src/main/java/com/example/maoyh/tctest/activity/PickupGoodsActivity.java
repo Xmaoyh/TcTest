@@ -17,8 +17,6 @@ import okhttp3.Call;
  * Created by MAOYH on 2016/3/9.
  */
 public class PickupGoodsActivity extends AppCompatActivity {
-
-    private JsonDriver mJsonDriver;
     @Bind(R.id.message)
     TextView mTextView;
 

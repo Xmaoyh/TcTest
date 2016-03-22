@@ -88,7 +88,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:text="身份证正面照"
+                android:text="身份证反面照"
                 style="@style/myinfo_text_style" />
         </LinearLayout>
     </LinearLayout>
