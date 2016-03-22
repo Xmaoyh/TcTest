@@ -74,11 +74,12 @@ public class LogisticsMapFragment extends Fragment {
                     addCar(new LatLng(30.2817240000 + Math.random(), 119.9980410000 + Math.random()), "notfull");
                     addCar(new LatLng(30.2817240000 + Math.random(), 119.9980410000 + Math.random()), "full");
                 }
+                //每隔5秒执行该任务
                 mHandler.postDelayed(this, 5000);
             }
         };
-
-        mHandler.postDelayed(mRunnable, 5000);
+        //1秒之后开始执行任务
+        mHandler.postDelayed(mRunnable, 1000);
 
     }
 
