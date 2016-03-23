@@ -34,7 +34,11 @@ dependencies {
     compile files('libs/baidumapapi_util_v3_7_1.jar')
     compile files('libs/locSDK_6.13.jar')
     compile 'com.jakewharton:butterknife:7.0.1'
-    compile 'com.squareup.okhttp3:okhttp:3.2.0'
-    compile 'com.google.code.gson:gson:2.6.2'
-    compile 'com.zhy:okhttputils:2.3.8'
+//    compile 'com.squareup.okhttp3:okhttp:3.2.0'
+//    compile 'com.google.code.gson:gson:2.6.2'
+//    compile 'com.zhy:okhttputils:2.3.8'
+    compile 'com.squareup.retrofit2:retrofit:2.0.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.0.0'
+    compile 'io.reactivex:rxandroid:1.1.0'
 }

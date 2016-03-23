@@ -1,12 +1,6 @@
 package com.example.maoyh.tctest.jsonBean;
 
-import com.google.gson.Gson;
-import com.zhy.http.okhttp.callback.Callback;
-
-import java.io.IOException;
 import java.util.List;
-
-import okhttp3.Response;
 
 /**
  * Created by MAOYH on 2016/3/21.
@@ -158,14 +152,14 @@ public  class JsonDriver {
         }
     }
 
-    public abstract class DriverCallback extends Callback<JsonDriver>
-    {
-        @Override
-        public JsonDriver parseNetworkResponse(Response response) throws IOException
-        {
-            String string= response.body().string();
-            JsonDriver mJsonDriver = new Gson().fromJson(string, JsonDriver.class);
-            return mJsonDriver;
-        }
-    }
+//    public abstract class DriverCallback extends Callback<JsonDriver>
+//    {
+//        @Override
+//        public JsonDriver parseNetworkResponse(Response response) throws IOException
+//        {
+//            String string= response.body().string();
+//            JsonDriver mJsonDriver = new Gson().fromJson(string, JsonDriver.class);
+//            return mJsonDriver;
+//        }
+//    }
 }

@@ -3,15 +3,20 @@ package com.example.maoyh.tctest.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.TextView;
-
 import com.example.maoyh.tctest.R;
+import com.example.maoyh.tctest.apiservice.StowageService;
 import com.example.maoyh.tctest.jsonBean.JsonDriver;
-import com.zhy.http.okhttp.OkHttpUtils;
+import com.example.maoyh.tctest.until.AppUtils;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import okhttp3.Call;
+import retrofit2.Retrofit;
+import rx.Observable;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by MAOYH on 2016/3/9.
@@ -25,32 +30,49 @@ public class PickupGoodsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_pickupgoods);
         ButterKnife.bind(this);
-        OkHttpUtils.get()
-                .url("http://192.168.199.110:8080/mockjs/1/getLoadingSheetList?")
-                .build()
-                .execute(new JsonDriver().new DriverCallback() {
+//        OkHttpUtils.get()
+//                .url("http://192.168.199.110:8080/mockjs/1/getLoadingSheetList?")
+//                .build()
+//                .execute(new JsonDriver().new DriverCallback() {
+//                    @Override
+//                    public void onError(Call call, Exception e) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onResponse(JsonDriver response) {
+//                        mTextView.setText(String.valueOf(response.getCount()));
+//                    }
+//                });
+
+//        Retrofit retrofit = new Retrofit.Builder()
+//                .baseUrl("http://192.168.199.110:8080/mockjs/1/")
+//                .addConverterFactory(GsonConverterFactory.create())
+//                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+//                .build();
+        Retrofit retrofit = AppUtils.getRetrofit("http://192.168.199.110:8080/mockjs/1/");
+        StowageService stowageService  = retrofit.create(StowageService.class);
+        Observable<JsonDriver> observable = stowageService.getLoadingSheetList();
+        observable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<JsonDriver>() {
                     @Override
-                    public void onError(Call call, Exception e) {
+                    public void onCompleted() {
 
                     }
 
                     @Override
-                    public void onResponse(JsonDriver response) {
-                        mTextView.setText(String.valueOf(response.getCount()));
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(JsonDriver jsonDriver) {
+                        String msg = String.valueOf(jsonDriver.getCount());
+                        mTextView.setText(msg);
+                        Log.e("信息",msg);
                     }
                 });
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

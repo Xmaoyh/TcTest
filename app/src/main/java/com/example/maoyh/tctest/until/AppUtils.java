@@ -7,6 +7,10 @@ package com.example.maoyh.tctest.until;
 import android.app.Activity;
 import android.content.Context;
 
+import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 /**
  * 添加activity
  * @author ad
@@ -48,5 +52,14 @@ public class AppUtils {
      */
     public static void setContext(Context context){
         sContext = context;
+    }
+
+    public static Retrofit getRetrofit(String baseUrl){
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(baseUrl)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .build();
+        return  retrofit;
     }
 }
