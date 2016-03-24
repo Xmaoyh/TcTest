@@ -7,9 +7,14 @@ package com.example.maoyh.tctest.until;
 import android.app.Activity;
 import android.content.Context;
 
+import com.example.maoyh.tctest.apiservice.StowageService;
+import com.example.maoyh.tctest.jsonBean.JsonDriver;
+
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import rx.Observable;
+import rx.schedulers.Schedulers;
 
 /**
  * 添加activity
@@ -54,12 +59,13 @@ public class AppUtils {
         sContext = context;
     }
 
-    public static Retrofit getRetrofit(String baseUrl){
+    public static Retrofit getRetrofit (String baseUrl){
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
         return  retrofit;
+
     }
 }

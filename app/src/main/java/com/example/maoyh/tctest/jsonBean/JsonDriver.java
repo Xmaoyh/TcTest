@@ -7,24 +7,24 @@ import java.util.List;
  */
 public  class JsonDriver {
     /**
-     * count : 53523
-     * totalCount : 54072
-     * dataList : [{"loadingPointList":[{"loadingPoint":"测试内容lduf"}],"status":16020,"endStation":"测试内容en7b","hasWeight":12573,"finishDate":"@date","code":"测试内容673q","hasVolume":75882,"carNo":"测试内容v3x7"}]
-     * page : 31140
+     * count : 72165
+     * dataList : [{"carNo":"测试内容pe85","code":"测试内容vrso","endStation":"测试内容4dp5","finishDate":"1979-08-13","hasVolume":26764,"hasWeight":48853,"loadingPointList":[{"loadingPoint":"测试内容1540"}],"status":68174}]
+     * page : 22316
+     * totalCount : 44185
      */
 
     private int count;
-    private int totalCount;
     private int page;
+    private int totalCount;
     /**
-     * loadingPointList : [{"loadingPoint":"测试内容lduf"}]
-     * status : 16020
-     * endStation : 测试内容en7b
-     * hasWeight : 12573
-     * finishDate : @date
-     * code : 测试内容673q
-     * hasVolume : 75882
-     * carNo : 测试内容v3x7
+     * carNo : 测试内容pe85
+     * code : 测试内容vrso
+     * endStation : 测试内容4dp5
+     * finishDate : 1979-08-13
+     * hasVolume : 26764
+     * hasWeight : 48853
+     * loadingPointList : [{"loadingPoint":"测试内容1540"}]
+     * status : 68174
      */
 
     private List<DataListBean> dataList;
@@ -37,20 +37,20 @@ public  class JsonDriver {
         this.count = count;
     }
 
-    public int getTotalCount() {
-        return totalCount;
-    }
-
-    public void setTotalCount(int totalCount) {
-        this.totalCount = totalCount;
-    }
-
     public int getPage() {
         return page;
     }
 
     public void setPage(int page) {
         this.page = page;
+    }
+
+    public int getTotalCount() {
+        return totalCount;
+    }
+
+    public void setTotalCount(int totalCount) {
+        this.totalCount = totalCount;
     }
 
     public List<DataListBean> getDataList() {
@@ -62,49 +62,40 @@ public  class JsonDriver {
     }
 
     public static class DataListBean {
-        private int status;
-        private String endStation;
-        private int hasWeight;
-        private String finishDate;
-        private String code;
-        private int hasVolume;
         private String carNo;
+        private String code;
+        private String endStation;
+        private String finishDate;
+        private int hasVolume;
+        private int hasWeight;
+
+        @Override
+        public String toString() {
+            return "DataListBean{" +
+                    "carNo='" + carNo + '\'' +
+                    ", code='" + code + '\'' +
+                    ", endStation='" + endStation + '\'' +
+                    ", finishDate='" + finishDate + '\'' +
+                    ", hasVolume=" + hasVolume +
+                    ", hasWeight=" + hasWeight +
+                    ", status=" + status +
+                    ", loadingPointList=" + loadingPointList +
+                    '}';
+        }
+
+        private int status;
         /**
-         * loadingPoint : 测试内容lduf
+         * loadingPoint : 测试内容1540
          */
 
         private List<LoadingPointListBean> loadingPointList;
 
-        public int getStatus() {
-            return status;
+        public String getCarNo() {
+            return carNo;
         }
 
-        public void setStatus(int status) {
-            this.status = status;
-        }
-
-        public String getEndStation() {
-            return endStation;
-        }
-
-        public void setEndStation(String endStation) {
-            this.endStation = endStation;
-        }
-
-        public int getHasWeight() {
-            return hasWeight;
-        }
-
-        public void setHasWeight(int hasWeight) {
-            this.hasWeight = hasWeight;
-        }
-
-        public String getFinishDate() {
-            return finishDate;
-        }
-
-        public void setFinishDate(String finishDate) {
-            this.finishDate = finishDate;
+        public void setCarNo(String carNo) {
+            this.carNo = carNo;
         }
 
         public String getCode() {
@@ -115,6 +106,22 @@ public  class JsonDriver {
             this.code = code;
         }
 
+        public String getEndStation() {
+            return endStation;
+        }
+
+        public void setEndStation(String endStation) {
+            this.endStation = endStation;
+        }
+
+        public String getFinishDate() {
+            return finishDate;
+        }
+
+        public void setFinishDate(String finishDate) {
+            this.finishDate = finishDate;
+        }
+
         public int getHasVolume() {
             return hasVolume;
         }
@@ -123,12 +130,20 @@ public  class JsonDriver {
             this.hasVolume = hasVolume;
         }
 
-        public String getCarNo() {
-            return carNo;
+        public int getHasWeight() {
+            return hasWeight;
         }
 
-        public void setCarNo(String carNo) {
-            this.carNo = carNo;
+        public void setHasWeight(int hasWeight) {
+            this.hasWeight = hasWeight;
+        }
+
+        public int getStatus() {
+            return status;
+        }
+
+        public void setStatus(int status) {
+            this.status = status;
         }
 
         public List<LoadingPointListBean> getLoadingPointList() {
@@ -152,6 +167,15 @@ public  class JsonDriver {
         }
     }
 
+    @Override
+    public String toString() {
+        return "JsonDriver{" +
+                "count=" + count +
+                ", page=" + page +
+                ", totalCount=" + totalCount +
+                ", dataList=" + dataList +
+                '}';
+    }
 //    public abstract class DriverCallback extends Callback<JsonDriver>
 //    {
 //        @Override

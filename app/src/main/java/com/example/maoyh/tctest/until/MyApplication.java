@@ -9,6 +9,7 @@ import com.baidu.mapapi.SDKInitializer;
  * Created by MAOYH on 2016/3/9.
  */
 public class MyApplication extends Application {
+
     @Override
     public void onCreate() {
         super.onCreate();

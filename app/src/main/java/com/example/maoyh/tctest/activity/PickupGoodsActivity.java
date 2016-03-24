@@ -68,9 +68,9 @@ public class PickupGoodsActivity extends AppCompatActivity {
 
                     @Override
                     public void onNext(JsonDriver jsonDriver) {
-                        String msg = String.valueOf(jsonDriver.getCount());
+                        String msg =jsonDriver.getDataList().get(0).getFinishDate();
                         mTextView.setText(msg);
-                        Log.e("信息",msg);
+                        Log.e("信息",jsonDriver.toString()+jsonDriver.getDataList().get(0).toString());
                     }
                 });
 
